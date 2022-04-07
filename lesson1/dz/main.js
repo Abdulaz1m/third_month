@@ -5,23 +5,28 @@ const btn = document.getElementById('btn');
 const numbers = document.getElementById('numbers')
 
 
-function Search (){
-    const regex = new RegExp(`${input.value}`, 'gi');
-    const result = regex.test(Arr)
-    if (input.value === ''){
-        console.log('Поле пустое')
-        return result === false
-    }
-    if (result === false){
-        console.log('Не найдено совпадений')
-    }
-    if (result ===  true){
-        alert("Найдены совпадения")
-    }
+function Search (e){
+    e.preventDefault()
+    Arr.forEach(element => {
+        const regex = new RegExp(`${input.value}`, 'gi');
+        const result = regex.test()
+        if (input.value === ''){
+            console.log('Поле пустое')
+            return result === false
+        }
+        else if (result === false){
+            console.log('Не найдено совпадений')
+        }
+        else if (result ===  true){
+            alert("Найдены совпадения")
+        }
+    });
 }
 
+
+
 function addNumberTag (){
-    const regex = /\D/g
+    const regex = new RegExp(`\\W`, 'g')
     const div = document.getElementById('div')
     const a = document.createElement('a')
     div.append(a)
@@ -57,7 +62,6 @@ function del2() {
 
 function add (){
     localStorage.setItem(`${document.getElementById('add_inp').value}`, json)
-
 }
 
 document.getElementById('delete').addEventListener('click', del)
